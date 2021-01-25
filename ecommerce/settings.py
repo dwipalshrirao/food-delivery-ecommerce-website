@@ -131,12 +131,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
 
-#razerpay api key
-#rzp_test_h4LTJO5SeUwB0K
 
-# gmail app
-# xxytmrcgjunfxztg
-# hvkviumzxjgpjvsw
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
