@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<div class="flex justify-center" style="margin: 5% 10%;flex-direction: column;" >
+
+    <h1 class="section-heading" style="margin-top: 20px;">{{singleblog.title}}</h1>
+    
+    <center style="margin: 20px;" >
+        
+        
+        <img  src={{singleblog.image.url}} alt="" style="width: 100%; height: auto;max-width: 600px;">
+    </center>
+        <p style="margin: 20px;">&nbsp;&nbsp;&nbsp;{{singleblog.content}} {%lorem 15 p random %}  </p>
+    </div>
+
+
+{%endblock%}

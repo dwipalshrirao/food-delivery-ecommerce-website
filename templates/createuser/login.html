@@ -1,0 +1,40 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/createuser/login.css' %}">
+
+  <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+  <div class='bold-line'></div>
+<div class='container'>
+  <div class='window'>
+    <div class='overlay'></div>
+    <div class='content'>
+      <div class='welcome'>Login here!</div>
+      <div class='subtitle'>We're almost done. Before using our services you need to create an account.</div>
+      <form action="" method="POST">
+        <div class='input-fields'>
+          {%csrf_token%}
+          <!-- <input type='text' placeholder='Username' class='input-line full-width'></input> -->
+          <input type='email' name="email" placeholder='Email' class='input-line full-width'></input>
+          <input type='password' name="password" placeholder='Password' class='input-line full-width'></input>
+  
+        </div>
+        <div><button type="submit" class='ghost-round full-width'>Login</button></div>
+      </form>
+      <div class='spacing'><a href="{%url 'createuser:register'%}">create new accoount? </a> </div>
+    </div>
+  </div>
+</div>
+  
+</body>
+</html>
+

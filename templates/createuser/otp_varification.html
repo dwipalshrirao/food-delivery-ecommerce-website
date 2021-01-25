@@ -1,0 +1,101 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="{% static 'css/createuser/otp_varification.css' %}">
+
+</head>
+
+<body>
+    	
+
+<form action="#" method="post">
+    {%csrf_token%}
+	<h2>enter otp</h2>
+	<p hidden >
+
+		<input type="text" name='email' id="email" value={{email}} >
+	</p>
+          <p >
+              <label for="otp" class="floatLabel">Enter your Otp</label>
+              <input id="otp" name="otp" type="text">
+          </p>
+          
+	  <!-- {{email}} -->
+	  <p class="massege">opt has been sent on your email, it will expire in 5 minutes</p>
+	  {% if massege%}
+	  <p class="massege" style="color: red;">{{massege}} </p>
+	  {%endif%}
+
+          <p>
+              <input type="submit" value="Cofirm" id="submit">
+		  </p>
+		  <p {% if massege != "otp is expired" %} hidden 
+		 	{%endif%} 
+		  >
+			<input type="button" value="Regenrate Otp" id="otp-regenrate">
+			<p id="regenrate-massage" style="font-size: medium;"></p>
+		</p>
+	  </form>
+
+
+	  
+	  <script>
+		  var searchRequest = null;
+		  email=document.getElementById('email').value
+		console.log(email)
+
+$(function () {
+    var searchRequest = null;
+
+    $("#otp-regenrate").click(function () {
+        email=document.getElementById('email').value
+		console.log(email)
+        regen=document.getElementById('regenrate-massage')
+         regen.innerHTML =''
+
+        
+        
+        
+        
+            if (searchRequest != null) 
+                searchRequest.abort();
+               
+
+            searchRequest = $.ajax({
+                type: "GET",
+                url: "{%url 'createuser:regenrate_otp'%}",
+                data: {
+                    'email' : email
+                },
+                dataType: "text",
+                success: function(msg){
+                    var obj = JSON.parse(msg);
+                    console.log(obj.massege)
+                    
+                    
+                    if (obj.massege== 'otp re-genrated'){
+					regen=document.getElementById('regenrate-massage')
+                    regen.innerHTML ='Otp is regenerated, please check your mail'
+                    regen.style.display='block'
+                    }
+                    else{
+                        regen.innerHTML ='Something went wrong, please register again'
+                    }
+                    console.log(regen)
+                   
+                }
+            });
+        
+    });
+});
+
+	  </script>
+	  
+</body>
+</html>

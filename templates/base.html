@@ -1,0 +1,392 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My awesome food store</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {%block cartstyle%}
+    {%endblock%}
+
+    
+    {% block blogstyle %}
+    {% endblock %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+/* .search-container {
+  float: right;
+} */
+
+.topnav input[type=text] ,topnav1{
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  /* border: none; */
+}
+
+.topnav .search-container button ,topnav1{
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover ,topnav1{
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button ,topnav1{
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+/*------------------*/
+
+</style>
+
+</head>
+
+<body>
+    <input type="text" value={{user}} id="user" hidden >
+    <div class="main-wrapper">
+        <div class="nav-background">
+            <div class="mobile-logo">
+                <img src="{% static 'icons/logo.svg' %}" alt="">
+            </div>
+            <div class="mobile-nav">
+                <div class="cart">
+                    {%if not user.is_authenticated%}
+                    <div class="flex items-center"  >
+                        <a href="{%url 'cart' %}">
+                        <img src="{% static 'icons/cart-dark.svg' %}" alt="">
+                        </a>
+                        <a href="{%url 'cart' %}">
+                            <span id=cartvalue>
+                                0
+                            </span> Items in cart</a>
+                    </div>
+                    {%else%}
+
+                    <div class="flex items-center"  >
+                        <a href="{%url 'cart' %}">
+                        <img src="{% static 'icons/cart-dark.svg' %}" alt="">
+                        </a>
+                        <a href="{%url 'cart' %}">
+                            <span id=cartvalue>
+                                {{items}}
+                            </span> Items in cart</a>
+                    </div>
+                    {%endif%}
+                </div>
+                <div class="nav-top">
+                    <ul>
+                        <li>
+                            <a href="/">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">About us</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'all-food' %}
+                            ">Products</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'bloglist' %}">Blog</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/#our-services">Services</a>
+                        </li>
+                        <li>
+                            <a href="/#contact-us">Contact us</a>
+                        </li>
+                       {% if user.is_authenticated%}
+                       <li>{{user.first_name}}</li>
+                       <li>
+                        <a href="{%url 'createuser:logout' %}">logout</a>
+                       </li>
+                       {%else%}
+                       <li>
+                        <a href="{%url 'createuser:login' %}">Log in</a>
+                    </li>
+                    <li>
+                        <a href="{%url 'createuser:register' %}">Register</a>
+                    </li>
+                       {%endif %}
+                    </ul>
+                </div>
+                <div class="contact flex items-center">
+                    <img src="{% static 'icons/phone.svg' %}" alt="">
+                    <div>
+                        <h5 ><a href="tel:(+91)7620988848">
+                            Call US: (+91)7620988848</a></h5>
+                        <h6>E-mail : support@freshmeal.com</h6>
+                    </div>
+                </div>
+                <div class="time flex items-center">
+                    <img src="{% static 'icons/clock.svg' %}" alt="">
+                    <div>
+                        <h5>Working Hours:</h5>
+                        <h6>Mon - Sat (8.00am - 12.00am)</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="site-content-wrapper">
+            <div class="nav-trigger">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-bar-chart">
+                    <line x1="12" y1="20" x2="12" y2="10" />
+                    <line x1="18" y1="20" x2="18" y2="4" />
+                    <line x1="6" y1="20" x2="6" y2="16" /></svg>
+            </div>
+            <div class="site-content">
+                <header class="topbar">
+                    <div class="container flex justify-between items-center">
+                        <div class="icons">
+                            <a href="#"><img src="{% static 'icons/facebook.svg' %}" alt=""></a>
+                            <a href="#"><img src="{% static 'icons/twitter.svg' %}" alt=""></a>
+                            <a href="#"><img src="{% static 'icons/google.svg' %}" alt=""></a>
+                            <a href="#"><img src="{% static 'icons/instagram.svg' %}" alt=""></a>
+                            <!-- <a href="#"><img src="{% static 'icons/search.svg' %}" alt=""></a> -->
+                        </div>
+                        <div class="auth flex items-center">
+                            {% if user.is_authenticated%}
+                            <div>
+                                <img src="{% static 'icons/user-icon.svg' %}" alt="">
+                                {{user.first_name}}
+                            </div>
+                            <span class="divider">|</span>
+                            <div>
+                        <a href="{%url 'createuser:logout' %}">logout</a>
+                            </div>
+                       {%else%}
+            
+                       
+                            <div>
+                                <img src="{% static 'icons/user-icon.svg' %}" alt="">
+                                <a href="{%url 'createuser:login' %}">Log in</a>
+                            </div>
+                            <span class="divider">|</span>
+                            <div>
+                                <img src="{% static 'icons/edit.svg' %}" alt="">
+                                <a href="{%url 'createuser:register' %}">Register Now</a>
+                            </div>
+                            {%endif %}
+
+
+                            <span class="divider">|</span>
+                            <div>
+                                
+                                {%if not user.is_authenticated%}
+                    <div class="flex items-center"  >
+                        <a href="{%url 'cart' %}">
+                        <img src="{% static 'icons/cart-dark.svg' %}" alt="">
+                        </a>
+                        <a href="{%url 'cart' %}">
+                            <span id=cartvalue1>
+                                0
+                            </span> Items in cart</a>
+                    </div>
+                    {%else%}
+
+                    <div class="flex items-center"  >
+                        <a href="{%url 'cart' %}">
+                        <img src="{% static 'icons/cart-dark.svg' %}" alt="">
+                        </a>
+                        <a href="{%url 'cart' %}">
+                            <span id=cartvalue1>
+                                {{items}}
+                            </span> Items in cart</a>
+                    </div>
+                    {%endif%}
+                               
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <nav>
+                    <div class="top">
+                        <div class="container flex justify-between">
+                            <div class="contact flex items-center">
+                                <img src="{% static 'icons/phone.svg' %}" alt="">
+                                <div>
+                                    <h5 ><a href="tel:(+91)7620988848">
+                                        Call US: (+91)7620988848</a></h5>
+                                    <h6>E-mail : support@freshmeal.com</h6>
+                                </div>
+                            </div>
+                            <div class="branding">
+                                <img src="{% static 'icons/logo.svg' %}" alt="">
+                            </div>
+                            <div class="time flex items-center">
+                                <img src="{% static 'icons/clock.svg' %}" alt="">
+                                <div>
+                                    <h5>Working Hours:</h5>
+                                    <h6>Mon - Sat (8.00am - 12.00am)</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navbar magic-shadow">
+                        <div class="container flex justify-center topnav">
+                            <a href="/" {%block activeclass_home%}{%endblock%} >Home</a>
+                            <a href="#" {%block activeclass_about%}{%endblock%}>About us</a>
+                            <a href="{% url 'all-food' %}
+                            " {%block activeclass_prod%}{%endblock%}>Products</a>
+                            <a href="{% url 'bloglist' %}" {%block activeclass_blog%}{%endblock%}>Blog</a>
+                           
+                            <a href="/#our-services">Services</a>
+                           
+                            <a href="/#contact-us">Contact us</a>
+                            <div class="search-container">
+                                <form action="{%url 'search' %}">
+                                  <input type="text" placeholder="Search.." name="search">
+                                  <button type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                              </div>
+                        </div>
+                    </div>
+                </nav>
+
+                {% block content %}
+                {% endblock %}
+
+
+                
+                <footer>
+                    <div class="container">
+                        <div class="box">
+                            <h3>About us</h3>
+                            <p>It was popularised in the 1960 with the release of Latest sheets containing Lorem Ipsum
+                                passage.</p>
+                            <button class="btn btn-secondary">Read More</button>
+                        </div>
+                        <div class="box">
+                            <h3>Quik Links</h3>
+                            <ul>
+                                <li>
+                                    <a href="#">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#">About us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Products</a>
+                                </li>
+                                <li>
+                                    <a href="#">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="/#our-services">Services</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/#contact-us">Contact us</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="box">
+                            <h3>Follow Us</h3>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.facebook.com/">
+                                            <img src="{% static 'icons/facebook.svg' %}" alt="">
+                                            <span>Facebook</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/">
+                                            <img src="{% static 'icons/twitter.svg' %}" alt="">
+                                            <span>Twitter</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="{% static 'icons/google.svg' %}" alt="">
+                                            <span>Google +</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/2palshrirao/">
+                                            <img src="{% static 'icons/instagram.svg' %}" alt="">
+                                            <span>Instagram</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="box instagram-api">
+                            <h3>Instagram</h3>
+                            <div class="post-wrap">
+                                <div>
+                                    <img src="{% static 'images/food-table.jpg' %}" alt="">
+                                </div>
+                                <div>
+                                    <img src="{% static 'images/food-table.jpg' %}" alt="">
+                                </div>
+                                <div>
+                                    <img src="{% static 'images/food-table.jpg' %}" alt="">
+                                </div>
+                                <div>
+                                    <img src="{% static 'images/food-table.jpg' %}" alt="">
+                                </div>
+                                <div>
+                                    <img src="{% static 'images/food-table.jpg' %}" alt="">
+                                </div>
+                                <div>
+                                    <img src="{% static 'images/food-table.jpg' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <footer class="copyright">
+                    <div>
+                        Copyright © 2020 .All rights reserved by <a href="https://www.instagram.com/2palshrirao/">Dwipal shrirao</a>.
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+    {% if user.is_authenticated %}
+    <script src="{% static 'js/updatecart.js' %}"></script>
+    {%endif%}
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{%block cartstyle%}
+<link rel="stylesheet" href="{%static 'css/cart.css'%} ">
+{%endblock%}
+
+
+{%block content%}
+	<center style="margin: 20px;margin-bottom: 40px;"><h1>Shopping Cart</h1></center>
+	
+
+
+	
+	<div class="shopping-cart" style="margin:20px 50px;">
+		
+		<div class="column-labels">
+			<label class="product-image">Image</label>
+			<label class="product-details">Product</label>
+			<label class="product-price">Price</label>
+			<label class="product-quantity">Quantity</label>
+			<label class="product-removal">Remove</label>
+			<label class="product-line-price">Total</label>
+		</div>
+		
+		{%for i in cart%}
+		<div class="product">
+			<div class="product-image">
+				<img src={{i.pimage.url}}>
+			</div>
+			<div class="product-details">
+				<div class="product-title">{{i.pname}} </div>
+				<!-- <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p> -->
+			</div>
+			<div class="product-price">{{i.price}} </div>
+			<div class="product-quantity">
+				<input type="number" value="1" min="1">
+			</div>
+			<div class="product-removal">
+				<button class="remove-product" id={{i.id}}>
+					Remove
+				</button>
+			</div>
+			<div class="product-line-price">{{i.price}} </div>
+		</div>
+		{%endfor%}
+		
+
+  <div class="totals">
+    <div class="totals-item">="
+      <label>Subtotal</label>
+      <div class="totals-value" id="cart-subtotal"></div>
+    </div>
+    <div class="totals-item">
+      <label>Tax (5%)</label>
+      <div class="totals-value" id="cart-tax"></div>
+    </div>
+    <div class="totals-item">
+      <label>Shipping</label>
+      <div class="totals-value" id="cart-shipping">15.00</div>
+    </div>
+    <div class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total"></div>
+    </div>
+  </div>
+      
+      <button class="checkout">Checkout</button>
+
+</div>
+

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+
+
+
+{%block activeclass_prod%}
+class="active"
+
+{%endblock%}
+
+
+{% block content%}
+{%load static%}
+
+
+
+
+<!-- ///////////////////////////////////// -->
+
+
+<!-- //////////// -->
+
+
+
+
+<!-- style="display: flex;
+    padding: 1rem;" -->
+    {% for category in categories %}
+<h1 class="section-heading" style="margin: 20px;margin-top: 5%;"> {{category}} </h1>
+    <div class="conta justify-center" 
+    style="display: flex;
+flex-wrap: wrap;
+
+
+ "
+    >
+    {% for product in category.get_products %}
+    <div class="food-card magic-shadow-sm prod-card" style="margin: 20px 5%;" >
+
+                                    <div class="product-image flex items-center justify-center " style="margin: 5% 20%;">
+                                        <div style="background:url({{product.pimage.url}}) no-repeat center;width: 300px;padding-top: 200px;background-size: contain;
+                                        border-radius: 50%;
+                                        "></div>
+                                        <!-- <img  src="{{i.pimage.url}}" alt=""> -->
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <h2 class="text-center">{{product.pname}}</h2>
+                                        <h5 class="text-center">{{product.category}} </h5>
+                                        <div class="stars flex justify-center items-center">
+                                            <img src="{% static 'icons/start-filled.svg' %}" alt="">
+                                            <img src="{% static 'icons/start-filled.svg' %}" alt="">
+                                            <img src="{% static 'icons/start-filled.svg' %}" alt="">
+                                            <img src="{% static 'icons/star-grey.svg' %}" alt="">
+                                            <img src="" alt="">
+                                        </div>
+                                        <div class="price text-center">
+                                            Rs. {{product.price}}
+                                        </div>
+                                        <!-- <form class="cartform" id="{{i.pname}}">
+                                            {% csrf_token %}
+                                            <input type="text" name="product" value="{{i.pname}}" hidden /> -->
+                                            {%if not user.is_authenticated%}
+                                            <a href="{%url 'createuser:login' %}" style="text-decoration: none;">
+                                        <div class="flex justify-center">
+                                            <button value="submit" class="cartform" id="{{product.id}}">
+                                                <img src="{% static 'icons/cart-2.svg' %}" alt="">
+                                                <span >Add to cart</span>
+                                            </button>
+                                        </div>
+                                    </a>
+                                            {%else%}
+                                            <div class="flex justify-center">
+
+                                            <button value="submit" class="cartform" id="{{product.id}}">
+
+                                            <img src="{% static 'icons/cart-2.svg' %}" alt="">
+                                            <span>Add to cart</span>
+                                        </button>
+                                    </div>
+                                            {%endif%}
+                                    <!-- </form> -->
+                                    </div>
+                                </div>
+                                {%endfor%}
+                            </div>
+                            {%endfor%}
+
+                            
+                              
+                            
+
+                               
+                               
+{%endblock%}

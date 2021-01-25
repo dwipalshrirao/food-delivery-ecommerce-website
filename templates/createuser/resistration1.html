@@ -1,0 +1,185 @@
+{%load static%}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/createuser/registration.css' %}">
+
+    <title>Document</title>
+</head>
+
+<body>
+    	
+
+<form action="#" method="post">
+    {%csrf_token%}
+    <h2>Sign Up</h2>
+   
+
+          <p>
+              
+             
+              {{ form.non_field_errors }}
+                  {{ form.first_name.errors }}
+                  <label class="floatLabel" for="{{ form.first_name.id_for_label }}">First Name</label>
+                  {{ form.first_name }}
+          </p>
+
+            <p>
+
+                
+              <label class="floatLabel" for="{{ form.last_name.id_for_label }}">Last Name</label>
+              {{ form.last_name }}
+              {{ form.last_name.errors }}
+            </p>
+              
+             <p>
+
+               <label class="floatLabel" for="{{ form.email.id_for_label }}">Email address:</label>
+               {{ form.email }}
+               
+                 {{ form.email.errors }}
+               <span id="not_valid_email" ></span>
+            </p>
+            <p>
+
+                {{ form.password.errors }}
+                <label class="floatLabel" for="{{ form.password.id_for_label }}">Password</label>
+                {{ form.password }}
+                <span>Enter a password longer than 8 characters</span>
+           </p>
+
+           <p>
+
+            {{ form.password1.errors }}
+            <label class="floatLabel" for="{{ form.password1.id_for_label }}">Re-enter Password</label>
+            {{ form.password1 }}
+            <span>Your passwords do not match</span>
+       </p>  
+         
+          
+          <p>
+              <input type="submit" value="Create My Account" id="submit">
+          </p>
+      </form>
+
+
+      <script>
+////email validation////////////////
+var searchRequest = null;
+
+$(function () {
+    var searchRequest = null;
+
+    $("#{{ form.email.id_for_label }}").keyup(function () {
+        error_msg=document.getElementById('not_valid_email')
+        error_msg.innerHTML =''
+
+        
+        var that = this;
+        console.log(that);
+        email_input = $(this).val();
+        console.log(email_input,'value')
+        var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        
+        if(email_input.match(mailformat))
+        {
+            console.log(email_input,'its email')
+            if (searchRequest != null) 
+                searchRequest.abort();
+                console.log(email_input,'its email abort')
+
+            searchRequest = $.ajax({
+                type: "GET",
+                url: "{%url 'createuser:checkmail'%}",
+                data: {
+                    'email' : email_input
+                },
+                dataType: "text",
+                success: function(msg){
+                    var obj = JSON.parse(msg);
+                    console.log(obj.massege)
+                    
+                    console.log(error_msg)
+                    if (obj.massege== 'exist'){
+
+                    error_msg.innerHTML ='user with this email already exist'
+                    error_msg.style.display='block'
+                    }
+                    else{
+                        error_msg.innerHTML =''
+                    }
+                    console.log(error_msg)
+                   
+                }
+            });
+        }
+    });
+});
+
+
+
+//////////////pasword validation////////////////////
+
+          //Problem: Hints are shown even when form is valid
+//Solution: Hide and show them at appropriate times
+var $password = $("#id_password");
+var $confirmPassword = $("#id_password1");
+
+
+
+//Hide hints
+$("form span").hide();
+
+function isPasswordValid() {
+  return $password.val().length > 8;
+}
+
+function arePasswordsMatching() {
+  return $password.val() === $confirmPassword.val();
+}
+
+function canSubmit() {
+  return isPasswordValid() && arePasswordsMatching();
+}
+
+function passwordEvent(){
+    //Find out if password is valid  
+    if(isPasswordValid()) {
+      //Hide hint if valid
+      $password.next().hide();
+    } else {
+      //else show hint
+      $password.next().show();
+    }
+}
+
+function confirmPasswordEvent() {
+  //Find out if password and confirmation match
+  if(arePasswordsMatching()) {
+    //Hide hint if match
+    $confirmPassword.next().hide();
+  } else {
+    //else show hint 
+    $confirmPassword.next().show();
+  }
+}
+
+function enableSubmitEvent() {
+  $("#submit").prop("disabled", !canSubmit());
+}
+
+//When event happens on password input
+$password.focus(passwordEvent).keyup(passwordEvent).keyup(confirmPasswordEvent).keyup(enableSubmitEvent);
+
+//When event happens on confirmation input
+$confirmPassword.focus(confirmPasswordEvent).keyup(confirmPasswordEvent).keyup(enableSubmitEvent);
+
+enableSubmitEvent();
+      </script>
+</body>
+</html>

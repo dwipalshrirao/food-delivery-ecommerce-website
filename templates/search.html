@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content%}
+{%load static%}
+{%if food%}
+<h1 class="section-heading" style="margin: 40px;">Items for : {{searchitem}}</h1>
+<div class="cont justify-center" 
+style="display: flex;
+flex-wrap: wrap;">
+{% for i in food %}
+    <div class="food-card magic-shadow-sm prod-card" style="margin: 20px 5%;">
+            <div class="product-image flex items-center justify-between " style="margin: 5% 20%;">
+                <div style="background:url({{i.pimage.url}}) no-repeat center;width: 300px;
+                padding-top: 200px;background-size: contain;
+                border-radius: 50%;
+                "></div>
+            <!-- <img src="{{i.pimage.url}}" alt=""> -->
+        </div>
+        <hr>
+        <div>
+            <h2 class="text-center">{{i.pname}}</h2>
+            <h5 class="text-center">{{i.category}} </h5>
+            <div class="stars flex justify-center items-center">
+                <img src="{% static 'icons/start-filled.svg' %}" alt="">
+                <img src="{% static 'icons/start-filled.svg' %}" alt="">
+                <img src="{% static 'icons/start-filled.svg' %}" alt="">
+                <img src="{% static 'icons/star-grey.svg' %}" alt="">
+                <img src="" alt="">
+            </div>
+            <div class="price text-center">
+                $ {{i.price}}
+            </div>
+            <!-- <form class="cartform" id="{{i.pname}}">
+                {% csrf_token %} -->
+                <input type="text" name="product" value="{{i.id}}" hidden />
+        <div class="flex justify-center">  
+            <button value="submit" class="cartform" id="{{i.id}}">
+                <img src="{% static 'icons/cart-2.svg' %}" alt="">
+                <span>Add to cart</span>
+            </button>
+        </div>
+        <!-- </form> -->
+        </div>
+    </div>
+    {%endfor%}
+    </div>
+    {%else%}
+    <h1 class="section-heading" style="margin: 40px;">No item available for : {{searchitem}}</h1>
+{%endif%}
+{%endblock%}

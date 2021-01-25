@@ -1,0 +1,104 @@
+{%extends 'base.html'%}
+{% load static %}
+
+{%block blogstyle%}
+
+<link rel="stylesheet" href="{%static 'css/blogs-grid.css'%} ">
+
+
+{%endblock%}
+
+{%block activeclass_blog%}
+
+class="active"
+
+{%endblock%}
+
+
+
+{% block content%}
+<div class="main">
+    <h1 class="section-heading">Letest News</h1>
+    <ul class="cards">
+      {%for i in blogs%}
+        <li class="cards_item">
+            <div class="card">
+              <div class="card_image"><img class="blog" src={{i.image.url}}></div>
+              <div class="card_content">
+                <h2 class="card_title">{{i.title}} </h2>
+                <p class="card_text">{{i.content}} 
+                
+                </p>
+                <a href="{%url 'singleblog' i.id %}" style="text-decoration: none;">
+                    <button class="btn card_btn" >Read More</button>
+                </a>
+              </div>
+            </div>
+          </li>
+      {%endfor%}
+      
+        <li class="cards_item">
+        <div class="card">
+          <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
+          <div class="card_content">
+            <h2 class="card_title">Card Grid Layout</h2>
+            <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
+            <button class="btn card_btn">Read More</button>
+          </div>
+        </div>
+      </li>
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image"><img src="https://picsum.photos/500/300/?image=5"></div>
+          <div class="card_content">
+            <h2 class="card_title">Card Grid Layout</h2>
+            <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
+            <button class="btn card_btn">Read More</button>
+          </div>
+        </div>
+      </li>
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image"><img src="https://picsum.photos/500/300/?image=11"></div>
+          <div class="card_content">
+            <h2 class="card_title">Card Grid Layout</h2>
+            <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
+            <button class="btn card_btn">Read More</button>
+          </div>
+        </div>
+      </li>
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image"><img src="https://picsum.photos/500/300/?image=14"></div>
+          <div class="card_content">
+            <h2 class="card_title">Card Grid Layout</h2>
+            <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
+            <button class="btn card_btn">Read More</button>
+          </div>
+        </div>
+      </li>
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image"><img src="https://picsum.photos/500/300/?image=17"></div>
+          <div class="card_content">
+            <h2 class="card_title">Card Grid Layout</h2>
+            <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
+            <button class="btn card_btn">Read More</button>
+          </div>
+        </div>
+      </li>
+      <li class="cards_item">
+        <div class="card">
+          <div class="card_image"><img src="https://picsum.photos/500/300/?image=2"></div>
+          <div class="card_content">
+            <h2 class="card_title">Card Grid Layout</h2>
+            <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
+            <button class="btn card_btn">Read More</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <h3 class="made_by">Made with ♡</h3>
+{%endblock%}
