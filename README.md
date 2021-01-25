@@ -25,7 +25,7 @@
 
   2. Add your email-id and password to settings.py file which will be useful for sending otp to user's email-id. But make sure that 2 step verification is turned off and Access to less secure apps is turned on of your Gmail account otherwise it will show error while sending OTP.
 
-  [image](https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/Screenshot1.png)
+  ![add email and password](https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/Screenshot1.png)
 
 
   3. run command below
