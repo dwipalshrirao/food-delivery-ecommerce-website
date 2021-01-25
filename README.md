@@ -11,9 +11,9 @@
   in future update I will add some feature like,
   * Dine-in, website visitor can book a table.
   * anonymus user can add items to cart without login.
-
-
-
+  
+  
+  I am not very good at desing UI so i got some code from [codersgyan github account](https://github.com/codersgyan/Responsive-restaurant-website)
   ##### Run the following commands to get started your project:
 
   1. download project
@@ -48,7 +48,8 @@
   python manage.py runserver
 ```
 
-  if you have any suggesion fill free comment below.
+  if this is helpful please give star to repo. 
+  thank you.
 
 
 
