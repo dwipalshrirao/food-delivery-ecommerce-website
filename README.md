@@ -13,7 +13,7 @@
   * anonymus user can add items to cart without login.
   
   
-  I am not very good at desing UI so i got some code from [codersgyan github account](https://github.com/codersgyan/Responsive-restaurant-website)
+  I am not very good at desing UI so i got some HTMl and css code from [codersgyan github account](https://github.com/codersgyan/Responsive-restaurant-website)
   ##### Run the following commands to get started your project:
 
   1. download project
