@@ -18,7 +18,8 @@
 
   1. download project
 
-  ```git clone https://github.com/dwipalshrirao/food-delivery-ecommerce-website.git
+  ```
+  git clone https://github.com/dwipalshrirao/food-delivery-ecommerce-website.git
 
   cd food-delivery-ecommerce-website
   ```
