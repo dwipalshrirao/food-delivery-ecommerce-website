@@ -14,7 +14,7 @@
 
 
 
-  #####Run the following commands to get started your project:
+  ##### Run the following commands to get started your project:
 
   1. download project
 
