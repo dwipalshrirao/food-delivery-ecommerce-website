@@ -176,7 +176,7 @@ def user_logout(request):
     return redirect('index')
 
 
-                         })
+                         
 
 def user_login(request):
     if request.method == 'POST':

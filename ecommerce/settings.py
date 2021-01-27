@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'dc6p9p)43x)0j7pk*bqr13hdstm^0ul_ub%@wyphffujbs@@xr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['food-delivery-ecommerce.herokuapp.com','127.0.0.1']
 
 
 # Application definition
