@@ -17,12 +17,18 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.flatpages.views import flatpage
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('products.urls'),name ='products'),
     path('login/',include('createuser.urls')),
     path('blogs/',include('blogapp.urls')),
+    path('dinein/',include('dine_in.urls'),name ='dinein'),
+    path('about-us/', flatpage, {'url': '/about/'}, name='about'),
+    # path('pages/', include('django.contrib.flatpages.urls')),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

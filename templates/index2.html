@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{%block title%}
+Home page
+
+{%endblock%}
 
 {%block activeclass_home%}
 
@@ -19,8 +23,13 @@ class="active"
                             been the
                             industry's standard dummy.</p>
                         <div>
-                            <button class="btn btn-primary">Order NOw</button>
-                            <button class="btn btn-secondary">Book a Table</button>
+                            <a href="{%url 'all-food'%}">
+
+                                <button class="btn btn-primary">Order NOW</button>
+                            </a>
+                            <a href="{%url 'dine_in:dine_in'%}">
+                                <button class="btn btn-secondary">Book a Table</button>
+                            </a>
                         </div>
                         <div class="hero-image">
                             <img src="{% static 'images/straw.png' %}" alt="">
@@ -43,13 +52,13 @@ class="active"
                                     <hr>
                                     <div>
                                         <h2 class="text-center">{{i.pname}}</h2>
-                                        <div class="stars flex justify-center items-center">
+                                        <!-- <div class="stars flex justify-center items-center">
                                             <img src="{% static 'icons/start-filled.svg' %}" alt="">
                                             <img src="{% static 'icons/start-filled.svg' %}" alt="">
                                             <img src="{% static 'icons/start-filled.svg' %}" alt="">
                                             <img src="{% static 'icons/star-grey.svg' %}" alt="">
                                             <img src="" alt="">
-                                        </div>
+                                        </div> -->
                                         <div class="price text-center">
                                             Rs. {{i.price}}
                                         </div>
@@ -78,31 +87,7 @@ class="active"
                                     </div>
                                 </div>
                                 {%endfor%}
-                                <!-- <div class="food-card magic-shadow-sm">
-                                    <div class="product-image flex items-center justify-center">
-                                        <img src="{% static 'images/plate-1.png' %}" alt="">
-                                    </div>
-                                    <hr>
-                                    <div>
-                                        <h2 class="text-center">Summer Salad</h2>
-                                        <div class="stars flex justify-center items-center">
-                                            <img src="{% static 'icons/start-filled.svg' %}" alt="">
-                                            <img src="{% static 'icons/start-filled.svg' %}" alt="">
-                                            <img src="{% static 'icons/start-filled.svg' %}" alt="">
-                                            <img src="{% static 'icons/star-grey.svg' %}" alt="">
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="price text-center">
-                                            $ 1.25
-                                        </div>
-                                        <div class="flex justify-center">
-                                            <button>
-                                                <img src="{% static 'icons/cart-2.svg' %}" alt="">
-                                                <span>Add to cart</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div> -->
+                               
                                
                                 
                                 
@@ -131,7 +116,10 @@ class="active"
                                     Latin professor at Hampden Sydney College in Virginia, The standard chunk of Lorem
                                     Ipsum used
                                     since the 1500s is reproduced below for those interested.</p>
-                                <button class="btn btn-secondary">Read More</button>
+                                    <a href="{% url 'about' %}">
+
+                                        <button class="btn btn-secondary">Read More</button>
+                                    </a>
                             </div>
                         </div>
                     </div>
@@ -151,13 +139,13 @@ class="active"
                                     <hr>
                                     <div>
                                         <h2 class="text-center">{{i.pname}}</h2>
-                                        <div class="stars flex justify-center items-center">
+                                        <!-- <div class="stars flex justify-center items-center">
                                             <img src="{% static 'icons/start-filled.svg' %}" alt="">
                                             <img src="{% static 'icons/start-filled.svg' %}" alt="">
                                             <img src="{% static 'icons/start-filled.svg' %}" alt="">
                                             <img src="{% static 'icons/star-grey.svg' %}" alt="">
                                             <img src="" alt="">
-                                        </div>
+                                        </div> -->
                                         <div class="price text-center">
                                             Rs. {{i.price}}
                                         </div>
@@ -183,32 +171,7 @@ class="active"
                                     </div>
                                 </div>
                                 {%endfor%}
-                                <!-- <div class="food-card magic-shadow-sm">
-                                    <div class="product-image flex items-center justify-center">
-                                        <img src="{% static 'images/plate-1.png' %}" alt="">
-                                    </div>
-                                    <hr>
-                                    <div>
-                                        <h2 class="text-center">Summer Salad</h2>
-                                        <div class="stars flex justify-center items-center">
-                                            <img src="{% static 'icons/start-filled.svg' %}" alt="">
-                                            <img src="{% static 'icons/start-filled.svg' %}" alt="">
-                                            <img src="{% static 'icons/start-filled.svg' %}" alt="">
-                                            <img src="{% static 'icons/star-grey.svg' %}" alt="">
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="price text-center">
-                                            $ 1.25
-                                        </div>
-                                        <div class="flex justify-center">
-                                            <button>
-                                                <img src="{% static 'icons/cart-2.svg' %}" alt="">
-                                                <span>Add to cart</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div> -->
-                               
+                                
                                 
                                 
                             </div>
@@ -228,19 +191,19 @@ class="active"
                                 <img class="icon" src="{% static 'icons/transport.svg' %}" alt="">
                                 <h2>Free Home delivery</h2>
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                <button class="btn btn-secondary">Read More</button>
+                                <!-- <button class="btn btn-secondary">Read More</button> -->
                             </div>
                             <div class="service-card magic-shadow-sm">
                                 <img class="icon" src="{% static 'icons/bag.svg' %}" alt="">
                                 <h2 class="text-primary">30 Days ReturnServices</h2>
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                <button class="btn btn-primary">Read More</button>
+                                <!-- <button class="btn btn-primary">Read More</button> -->
                             </div>
                             <div class="service-card magic-shadow-sm">
                                 <img class="icon" src="{% static 'icons/usd.svg' %}" alt="">
                                 <h2>Money Back Guaranted</h2>
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                <button class="btn btn-secondary">Read More</button>
+                                <!-- <button class="btn btn-secondary">Read More</button> -->
                             </div>
                         </div>
                     </div>
@@ -273,7 +236,32 @@ class="active"
                     <div class="container">
                         <h1 class="section-heading">Lastest News from Blog</h1>
                         <div class="article-wrapper">
+                            {%for i in blogs%}
+                            <a href="{%url 'singleblog' i.id %}" style="text-decoration: none;">
                             <article class="card magic-shadow-sm">
+                                <div>
+                                    <img src="{{i.image.url}}" style="height: 350px; width: 600px;" alt="">
+                                </div>
+                                <div class="card-content">
+                                    <div class="post-meta flex items-center justify-between">
+                                        <span>{{i.created_date}}</span>
+                                        <div>
+                                            <span>Posted by <strong>{{i.author}} </strong></span>
+                                            <!-- <span class="comment-count">12 Comments</span> -->
+                                        </div>
+                                    </div>
+
+                                    <h2>{{i.title}}</h2>
+                                    <p>{{i.content |truncatechars:150}}  </p>
+                                </div>
+                            </article>
+                        </a>
+                            {%endfor%}
+
+
+
+
+                            <!-- <article class="card magic-shadow-sm">
                                 <div>
                                     <img src="{% static 'images/coffee.jpg' %}" alt="">
                                 </div>
@@ -314,10 +302,13 @@ class="active"
                                         more
                                         letters.</p>
                                 </div>
-                            </article>
+                            </article> -->
                         </div>
                         <div class="text-center btn-wrapper">
-                            <button class="btn btn-secondary">View All</button>
+                            <a href="{% url 'bloglist' %}">
+
+                                <button class="btn btn-secondary">View All</button>
+                            </a>
                         </div>
                     </div>
                 </section>
@@ -335,6 +326,16 @@ class="active"
                             <div class="input-wrap">
                                 <input type="email" placeholder="email@freshmeal.com">
                                 <button>Subscribe</button>
+                                <!-- <h2 id="subscribed" style=" padding:0.8rem 2rem;
+                                background:var(--primary);
+                                color:var(--pure);
+                                border-radius: 4px;
+                                -webkit-border-radius: 4px;
+                                -moz-border-radius: 4px;
+                                -ms-border-radius: 4px;
+                                -o-border-radius: 4px;  
+                                font-size:1rem;
+                                height: 100%;width: 100%;">subscribed</h2> -->
                             </div>
                         </div>
                     </div>

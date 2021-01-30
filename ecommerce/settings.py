@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'dc6p9p)43x)0j7pk*bqr13hdstm^0ul_ub%@wyphffujbs@@xr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['food-delivery-ecommerce.herokuapp.com','127.0.0.1']
 
@@ -53,7 +53,7 @@ MIDDLEWARE = [
 
     'django.middleware.security.SecurityMiddleware',
 
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -152,6 +152,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),os.path.join(BASE_DIR, 'med
 
 # EMAIL_HOST_PASSWORD = '' #password associated with above email-id 
 
+<<<<<<< HEAD
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -160,3 +161,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'dwipalshrirao123@gmail.com' #sender's email-id
 
 EMAIL_HOST_PASSWORD = 'dwipal123' #password associated with above email-id 
+=======
+
+>>>>>>> 6861253882600afe67e40091ada1fa2556652f4b

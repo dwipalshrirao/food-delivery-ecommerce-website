@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block title%}
+Dine-in page
+
+{%endblock%}
+
+{%block activeclass_dinein %}
+
+class="active"
+{%endblock%}
+
+{%block dinein_style %}
+
+<link rel="stylesheet" href="{% static 'css/dinein/dinein.css' %}">
+{%endblock%}
+
+{% block content %}
+<h1 class="section-heading" style="margin-top: 20px;">Get your Table</h1>
+<form action="#" method="post" id="form">
+    {%csrf_token%}
+	
+	<p  >
+        <label for="email" class="floatLabel" >Enter your email</label>
+        <input type="text" name='email' id="email" required
+        {% if user.is_authenticated %}
+        value={{user.email}}
+        {%endif%}
+        >
+    </p>
+    <p>
+        <label for="date" class="floatLabel">select your date & time</label>
+        <input id="datetimepicker" required name="date" type="text" autocomplete="off" onchange="date1()" >
+    </p>
+    <p>
+        <label for="date" class="floatLabel">No. of People</label>
+        <input id="people" name="people" required type="number"  >
+    </p>
+
+          <p id="massege" style="color: red;"></p>
+          
+	  <!-- {{email}} -->
+	  
+	  {% if massege%}
+	  <p class="massege" style="color: red;">{{massege}} </p>
+	  {%endif%}
+
+          <p>
+              <input type="submit" id="submit" value="Cofirm" style="font-size: medium;">
+          </p>
+          
+	  </form>
+
+
+	  
+	  
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.js" integrity="sha512-L7jgg7T9UbYc7hXogUKssqe1B5MsgrcviNxsRbO53dDSiw/JxuA/4kVQvEORmZJ6Re3fVF3byN5TT7czo9Rdug==" crossorigin="anonymous"></script>
+
+<script>
+    jQuery('#datetimepicker').datetimepicker({
+  startDate:'+1971/05/01'//or 1986/12/08
+});
+
+function date1(){
+    document.getElementById("submit").disabled = false;
+a=document.getElementById('datetimepicker').value
+massege=document.getElementById('massege')
+   massege.style.display='none'
+
+
+b=a.split()
+    console.log(typeof a)
+    console.log(b)
+
+    try {
+        var x = new Date(b[0]);
+}
+catch(err) {
+    massege.innerHTML='Please give valid time'
+    massege.style.display='block'
+    document.getElementById("submit").disabled = true;
+}
+
+var y = new Date();
+// x.setHours(b[1].split(':'));
+if (x<=y){
+
+    console.log(x >y)
+    console.log('booking must be for future time')
+   
+    massege.innerHTML='booking must be for future time'
+    massege.style.display='block'
+}
+    console.log(y)
+    console.log(x,'set')
+}
+</script>
+{%endblock%}

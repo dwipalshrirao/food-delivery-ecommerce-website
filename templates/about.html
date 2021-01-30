@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block title%}
+{{ flatpage.title }}
+
+{%endblock%}
+
+
+
+{%block activeclass_about%}
+
+class="active"
+
+{%endblock%}
+
+
+{%block content%}
+<div class="flex justify-center" style="margin: 5% 10%;flex-direction: column;" >
+
+    <h1 class="section-heading" style="margin-top: 20px;"> {{ flatpage.title }}</h1>
+    
+   
+
+        <p style="margin: 20px;">&nbsp;&nbsp;&nbsp;{{ flatpage.content }} {%lorem 20 p random %}  </p>
+    </div>
+
+
+{%endblock%}

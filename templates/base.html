@@ -7,64 +7,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My awesome food store</title>
+    <title>
+        {%block title%}{%endblock%}
+    </title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/searchbar.css' %}">
     {%block cartstyle%}
     {%endblock%}
 
+    {%block dinein_style %}
+    {%endblock%}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" />
     
     {% block blogstyle %}
     {% endblock %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-/* .search-container {
-  float: right;
-} */
 
-.topnav input[type=text] ,topnav1{
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  /* border: none; */
-}
 
-.topnav .search-container button ,topnav1{
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.topnav .search-container button:hover ,topnav1{
-  background: #ccc;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav .search-container {
-    float: none;
-  }
-  .topnav a, .topnav input[type=text], .topnav .search-container button ,topnav1{
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;  
-  }
-}
-/*------------------*/
-
-</style>
+    <link rel="shortcut icon" type="image/png" href="{% static 'icons/logo.svg' %}"/>
 
 </head>
 
@@ -106,11 +69,15 @@
                             <a href="/">Home</a>
                         </li>
                         <li>
-                            <a href="#">About us</a>
+                            <a href="{% url 'about' %}">About us</a>
                         </li>
                         <li>
                             <a href="{% url 'all-food' %}
                             ">Products</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'dine_in:dine_in' %}
+                            ">Dine-in</a>
                         </li>
                         <li>
                             <a href="{% url 'bloglist' %}">Blog</a>
@@ -255,9 +222,12 @@
                     <div class="navbar magic-shadow">
                         <div class="container flex justify-center topnav">
                             <a href="/" {%block activeclass_home%}{%endblock%} >Home</a>
-                            <a href="#" {%block activeclass_about%}{%endblock%}>About us</a>
+                            <a href="{% url 'about' %}" {%block activeclass_about%}{%endblock%}>About us</a>
                             <a href="{% url 'all-food' %}
                             " {%block activeclass_prod%}{%endblock%}>Products</a>
+
+                            <a href="{% url 'dine_in:dine_in' %}
+                            " {%block activeclass_dinein%}{%endblock%}>Dine-in</a>
                             <a href="{% url 'bloglist' %}" {%block activeclass_blog%}{%endblock%}>Blog</a>
                            
                             <a href="/#our-services">Services</a>
@@ -284,23 +254,28 @@
                             <h3>About us</h3>
                             <p>It was popularised in the 1960 with the release of Latest sheets containing Lorem Ipsum
                                 passage.</p>
-                            <button class="btn btn-secondary">Read More</button>
+                                <a href="{% url 'about' %}">
+
+                                    <button class="btn btn-secondary">Read More</button>
+                                </a>
                         </div>
                         <div class="box">
                             <h3>Quik Links</h3>
                             <ul>
                                 <li>
-                                    <a href="#">Home</a>
+                                    <a href="/">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#">About us</a>
+                                    <a href="{% url 'about' %}">About us</a>
                                 </li>
                                 <li>
-                                    <a href="#">Products</a>
+                                    <a href="{% url 'all-food' %}">Products</a>
                                 </li>
                                 <li>
-                                    <a href="#">Blog</a>
+                                    <a href="{% url 'dine_in:dine_in' %}
+                                    ">Dine-in</a>
                                 </li>
+                                
                                 <li>
                                     <a href="/#our-services">Services</a>
                                 </li>

@@ -2,16 +2,18 @@ from django.shortcuts import render
 from .models import product,cart,category
 from django.http import JsonResponse
 from django.db.models import Q
-
+from blogapp.models import blog
 
 # Create your views here.
 
 
 def index(request):
     products=product.objects.all()
-    request.COOKIES['ada']='ggggggggggggrrrrrrrr'
-    print(request.COOKIES)
+    # request.COOKIES['ada']='ggggggggggggrrrrrrrr'
+    # print(request.COOKIES)
     responce={'food':products}
+    blogs=blog.objects.all().order_by('-id')[:2]
+    responce['blogs']=blogs
     if request.user:
         value= cart.objects.filter(user=request.user).distinct().count()
         responce['items']=value
@@ -26,15 +28,15 @@ def all_food(request):
     print(request.COOKIES)
     print(request.user,'user')
 
-   
-    responce={}
     
+    responce={}
+   
     cat=category.objects.all()
     responce['categories']=cat
     if request.user:
         value= cart.objects.filter(user=request.user).distinct().count()
         responce['items']=value
-    
+  
     return render(request,'products1.html',responce)
 
 
@@ -71,7 +73,7 @@ def updatecart(request):
        
         else:
             print(request.POST)
-            # print(request)
+          
             responce={'resp':'data is empty'}
 
         if data.get('query'):
@@ -88,17 +90,21 @@ def updatecart(request):
 
 def search(request):
     search=request.GET.get('search')
-    print(search)
+    print(search,'sera')
     data=search.split(' ')
     
     query = Q()
-    
+    cat_query=Q()
     for i in data:
         query |= Q(pname__icontains = i)
         print(i)
 
     for i in data:
-        query |= Q(category__icontains = i)
+        cat_query |= Q(name__icontains = i)        
+    cat_name=category.objects.filter(cat_query)
+
+    for i in cat_name:
+        query |= Q(categories__icontains = i)
     print(query)
     allfood=product.objects.filter(query)
     print(allfood)
@@ -115,7 +121,7 @@ def order_cart(request):
         response['cart']=product.objects.filter(id__in=carts)
         print(carts)
 
-       
+        
         value= cart.objects.filter(user=request.user).distinct().count()
         response['items']=value
         return render(request,'cart&checkout/cart.html',response)

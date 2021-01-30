@@ -1,6 +1,12 @@
 {%extends 'base.html'%}
 {% load static %}
 
+{%block title%}
+Blog page
+
+{%endblock%}
+
+
 {%block blogstyle%}
 
 <link rel="stylesheet" href="{%static 'css/blogs-grid.css'%} ">
@@ -26,9 +32,9 @@ class="active"
               <div class="card_image"><img class="blog" src={{i.image.url}}></div>
               <div class="card_content">
                 <h2 class="card_title">{{i.title}} </h2>
-                <p class="card_text">{{i.content}} 
+                <p class="card_text"> {{i.content |truncatechars:80}}  </p> 
                 
-                </p>
+                
                 <a href="{%url 'singleblog' i.id %}" style="text-decoration: none;">
                     <button class="btn card_btn" >Read More</button>
                 </a>
@@ -100,5 +106,5 @@ class="active"
     </ul>
   </div>
   
-  <h3 class="made_by">Made with ♡</h3>
+ 
 {%endblock%}
