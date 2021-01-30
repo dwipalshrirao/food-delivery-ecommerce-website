@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{%block activeclass_dinein %}
+
+class="active"
+{%endblock%}
+
+{%block dinein_style %}
+
+<link rel="stylesheet" href="{% static 'css/dinein/dinein.css' %}">
+{%endblock%}
+
+{% block content %}
+
+<form action="#" method="post" id="form">
+    {%csrf_token%}
+	<h2>Enter Your Otp</h2>
+	<p hidden >
+
+		<input type="text" name='email' id="email" value={{email}} >
+	</p>
+          <p >
+              <label for="otp" class="floatLabel">Enter your Otp</label>
+              <input id="otp" name="otp" type="text">
+          </p>
+          
+	  <!-- {{email}} -->
+	  <p class="massege">opt has been sent on your email, it will expire in 5 minutes</p>
+	  <p id="massege"></p>
+	  {% if massege%}
+	  <p class="massege" style="color: red;">{{massege}} </p>
+	  {%endif%}
+
+          <p>
+              <input type="button" value="Cofirm" id="submit">
+		  </p>
+		  
+	  </form>
+
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <center>
+
+                <!-- <span class="close">&times;</span> -->
+                <h3 >Your Table is Booked</h3>
+                <a href="{%url 'index'%}"  style="text-decoration: none;">
+                   
+                    <h4>Go To Home Page</h4>
+                </a>
+                
+            </center>
+        </div>
+      
+      </div>
+
+
+
+
+	  
+	  <script>
+		  var searchRequest = null;
+		  email=document.getElementById('email').value
+		console.log(email)
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+
+// for getting csrf token
+$(function () {
+    var searchRequest = null;
+    function getCookie(name) {
+     let cookieValue = null;
+     if (document.cookie && document.cookie !== '') {
+         const cookies = document.cookie.split(';');
+         for (let i = 0; i < cookies.length; i++) {
+             const cookie = cookies[i].trim();
+             // Does this coo/kie string begin with the name we want?
+             if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                 break;
+             }
+         }
+     }
+     return cookieValue;
+ }
+
+//  console.log(document.cookie)
+ csrf=getCookie('csrftoken')
+ console.log(csrf,'csrf')
+
+    $("#submit").click(function () {
+        email=document.getElementById('email').value
+        otp=document.getElementById('otp').value
+  
+		console.log(email)
+        regen=document.getElementById('massege')
+         regen.innerHTML =''
+
+        
+        // var that = this;
+        // console.log(that);
+        // email_input = $(this).val();
+        // console.log(email_input,'value')
+        
+        
+            if (searchRequest != null) 
+                searchRequest.abort();
+               
+
+            searchRequest = $.ajax({
+                type: "POST",
+                url: "{%url 'dine_in:verify_otp'%}",
+                data: {
+                    'csrfmiddlewaretoken':csrf,
+                    'email' : email,
+                    'otp':otp,
+                    
+                },
+                dataType: "text",
+                success: function(msg){
+                    var obj = JSON.parse(msg);
+                    console.log(obj.massege)
+                    
+                    
+                    if (obj.massege== 'otp verified'){
+                    regen=document.getElementById('massege')
+                    console.log(regen)
+                    regen.innerHTML ='Your Table Booked'
+
+                    modal.style.display = "block";
+
+
+                    regen.style.display='block'
+                    }
+                    else{
+                        regen.innerHTML ='Something went wrong, please register again'
+                    }
+                    console.log(regen)
+                   
+                }
+            });
+        
+    });
+});
+
+// span.onclick = function() {
+//   modal.style.display = "none";
+// }
+
+// // When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// }
+
+	  </script>
+{%endblock%}

@@ -693,6 +693,19 @@ section.subscribe .input-wrap button{
     -o-transition: all .3s ease;
     outline:none;
 }
+/* section.subscribe  .input-wrap */
+ h3#subscribed{
+    padding:0.8rem 2rem;
+    background:var(--primary);
+    color:var(--pure);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    font-size:1rem;
+}
+
 section.subscribe .input-wrap button:hover{
     background:var(--secondary);
 }
