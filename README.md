@@ -1,8 +1,8 @@
-## Food-delivery-ecommerce-website
+# Food-delivery-ecommerce-website
   This is food delivery website which is near about complete solution for **Restautent**. 
   Python with Django framework is used in this project.
 
-  ### Project look:
+  ## Project look:
 
   <!-- ![website look](https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/website_look.gif) -->
 
@@ -10,7 +10,7 @@
     <img src="https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/website_look.gif"> 
 </p>
 
-  ### Features of project:
+  ## Features of project:
 
   1. **Register user with email verification**. It sends OTP to user's email-id , also it will be expire after 5 minute, if user will have not use this OTP. After expiration of OTP, there is OTP re-genration feature,
   which generate OTP and send again to user's email-id.
@@ -31,7 +31,21 @@
   
   
   I am not very good at desing UI so i got some HTMl and css code from [codersgyan github account](https://github.com/codersgyan/Responsive-restaurant-website)
-  ##### Run the following commands to get started your project:
+
+  ## Technology Used:
+
+  #### Backend
+
+  * Python, Django
+  * MySQL
+  #### Frontend
+  * HTML
+  * CSS
+  * JAVASCRIPT
+  * AJAX
+  * JQUERY
+
+  ### Run the following commands to get started your project:
 
   1. download project
 
