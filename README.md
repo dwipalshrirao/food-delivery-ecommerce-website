@@ -4,10 +4,10 @@
 
   ### Project look:
 
-  ![website look](https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/website_look.gif)
+  <!-- ![website look](https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/website_look.gif) -->
 
   <p align="center" width="100%">
-    <img width="33%" src="https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/website_look.gif"> 
+    <img src="https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/website_look.gif"> 
 </p>
 
   ### Features of project:
