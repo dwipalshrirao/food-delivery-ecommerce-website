@@ -1,6 +1,9 @@
-## food-delivery-ecommerce-website
+## Food-delivery-ecommerce-website
   This is food delivery website which is near about complete solution for **Restautent**. 
   Python with Django framework is used in this project.
+
+  ### Project look:
+  ![website look](https://github.com/[username]/[reponame]/blob/master/website_look.gif)
 
   ### Features of project:
 
