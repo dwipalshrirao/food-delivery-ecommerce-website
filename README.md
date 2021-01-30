@@ -3,7 +3,8 @@
   Python with Django framework is used in this project.
 
   ### Project look:
-  ![website look](https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/master/website_look.gif)
+  
+  ![website look](https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/website_look.gif)
 
   ### Features of project:
 
