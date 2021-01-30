@@ -1,16 +1,25 @@
 ## food-delivery-ecommerce-website
-  this is food delivery website which is near about complete solution for hotel ,in next update i will add dine-in feature to project. 
-  Python with Django framework is used in this project. Here are some feature of it:
-  1. user can add item to cart without reloading page(javascript is used for this feature). 
-  But if user is not logged in then he will redirect to login page.
-  2. Register user with email verification. it sends OTP to user's email-id , also it will be expire after 5 minute,
-  if user will have not use this OTP. After expiration of OTP, there is OTP re-genration feature,
-  which generate OTP and send again to user's email-id.
-  3. Blogging system. admin can make crud operation on posts. Any website visitor can see posts.
+  This is food delivery website which is near about complete solution for **Restautent**. 
+  Python with Django framework is used in this project.
 
-  in future update I will add some feature like,
-  * Dine-in, website visitor can book a table.
-  * anonymus user can add items to cart without login.
+  ### Features of project:
+
+  1. **Register user with email verification**. It sends OTP to user's email-id , also it will be expire after 5 minute, if user will have not use this OTP. After expiration of OTP, there is OTP re-genration feature,
+  which generate OTP and send again to user's email-id.
+
+  2. **Dine-in feature**. Any user (i.e. Anonymus user) can book a table with email verification.
+
+  3. **Add to cart without reloading page**. User can add item to cart without reloading page(javascript is used for this feature). 
+  But if user is not logged in then he will redirect to login page.
+
+  4. **Blogging system**. Admin can make crud operation on posts and any website visitor can see posts.
+
+  5. **FlatePages**. I used Django's flat pages feature for about us page.
+
+
+  In future update I will add some feature like,
+  * Anonymus user can add items to cart without login.
+  * Payment gateway.
   
   
   I am not very good at desing UI so i got some HTMl and css code from [codersgyan github account](https://github.com/codersgyan/Responsive-restaurant-website)
