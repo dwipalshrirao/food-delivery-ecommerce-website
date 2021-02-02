@@ -88,7 +88,7 @@ Join me on:
 
 <!-- display the social media buttons in your README -->
 
-[![alt text][1.1]][1]
+[![alt text][1.1] =100x100][1]
 [![alt text][2.1]][2]
 
 
@@ -109,7 +109,7 @@ Join me on:
 <!-- update these accordingly -->
 
 [1]: http://www.instagram.com/2palshrirao
-[2]: http://www.facebook.com/sednaoui
+[2]: https://www.linkedin.com/in/dwipal-shrirao/
 
 
 
