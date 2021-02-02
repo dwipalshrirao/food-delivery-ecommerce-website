@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('products.urls'),name ='products'),
     path('login/',include('createuser.urls')),
-    path('blogs/',include('blogapp.urls')),
+    path('blogs/',include('blogapp.urls'),name='blogapp'),
     path('dinein/',include('dine_in.urls'),name ='dinein'),
     path('about-us/', flatpage, {'url': '/about/'}, name='about'),
     # path('pages/', include('django.contrib.flatpages.urls')),

@@ -324,11 +324,15 @@ class="active"
                                 web sites
                                 still in their infancy.</p>
                             <div class="input-wrap">
-                                <input type="email" placeholder="email@freshmeal.com">
-                                <button>Subscribe</button>
+                                <div id="input-wrapinner">
+
+                                    <input id="email" type="email" placeholder="email@freshmeal.com">
+                                    <button  id="sub_click">Subscribe</button>
+                                </div>
                                 
 
-                                    <h2 id="subscribed" hidden style=" padding:0.8rem 2rem;
+                                <h2 id="subscribed" hidden 
+                                style=" padding:0.8rem 2rem;
                                 background:var(--primary);
                                 color:var(--pure);
                                 border-radius: 4px;
@@ -338,6 +342,7 @@ class="active"
                                 -o-border-radius: 4px;  
                                 font-size:1rem;
                                 height: 100%;width: 100%;
+                                margin: 4px;
                                 ">Subscribed</h2>
                             </div>
                         </div>
@@ -382,8 +387,51 @@ class="active"
                 </section>
 
                 <script>
+                    document.getElementById("subscribed").style.display = "none";
+                    
+var searchRequest = null;
+		  email=document.getElementById('email').value
+		console.log(email)
 
+$(function () {
+    var searchRequest = null;
 
+    $("#sub_click").click(function () {
+        email=document.getElementById('email').value
+		console.log(email)
+        
+
+            if (searchRequest != null) 
+                searchRequest.abort();
+               
+
+            searchRequest = $.ajax({
+                type: "GET",
+                url: "{%url 'subscribe'%}",
+                data: {
+                    'email' : email
+                },
+                dataType: "text",
+                success: function(msg){
+                    var obj = JSON.parse(msg);
+                    console.log(obj.massege)
+                    
+                    
+                    if (obj.massege== 'subscribed'){
+                        document.getElementById('input-wrapinner').style.display = "none";
+                        document.getElementById("subscribed").style.display = "inline";
+
+                    }
+                    else{
+                        console.error(obj.massege,'else')
+                    }
+                    
+                   
+                }
+            });
+        
+    });
+});
                 </script>
                 {%endblock%}
 <!-- footer--------------------- -->

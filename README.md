@@ -84,6 +84,33 @@
   thank you.
 
 
+Join me on: 
+
+<!-- display the social media buttons in your README -->
+
+[![alt text][1.1]][1]
+[![alt text][2.1]][2]
+
+
+
+<!-- links to social media icons -->
+<!-- no need to change these -->
+
+<!-- icons with padding -->
+
+[1.1]: https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/instagram.svg 
+[2.1]: https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/LinkedIn-logo-vector.svg  (facebook icon with padding)
+
+
+
+
+
+<!-- links to your social media accounts -->
+<!-- update these accordingly -->
+
+[1]: http://www.instagram.com/2palshrirao
+[2]: http://www.facebook.com/sednaoui
+
 
 
   

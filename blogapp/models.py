@@ -15,3 +15,7 @@ class blog(models.Model):
 
     def __str__(self):
         return self.title
+
+class subscribed_email(models.Model):
+    email=models.EmailField(max_length=100)
+    subscribe_time=models.DateTimeField(auto_now_add=True)

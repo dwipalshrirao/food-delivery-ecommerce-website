@@ -655,7 +655,9 @@ section.subscribe p{
     margin-bottom:1.5rem;
     line-height: 1.5;
 }
-section.subscribe .input-wrap{
+section.subscribe .input-wrap #input-wrapinner,
+section.subscribe .input-wrap
+{
     background:var(--heaven);
     display:flex;
     padding:0.3rem;
@@ -665,16 +667,16 @@ section.subscribe .input-wrap{
     -ms-border-radius:4px;
     -o-border-radius:4px;
 }
-section.subscribe .input-wrap input{
+section.subscribe .input-wrap #input-wrapinner input{
     width:100%;
     border:none;
     padding: 0 1rem;
     font-size:1rem;
 }
-section.subscribe .input-wrap input:focus{
+section.subscribe .input-wrap #input-wrapinner input:focus{
     outline:none;
 }
-section.subscribe .input-wrap button{
+section.subscribe .input-wrap #input-wrapinner button{
     padding:0.8rem 2rem;
     border:none;
     background:var(--primary);
@@ -693,20 +695,8 @@ section.subscribe .input-wrap button{
     -o-transition: all .3s ease;
     outline:none;
 }
-/* section.subscribe  .input-wrap */
- h3#subscribed{
-    padding:0.8rem 2rem;
-    background:var(--primary);
-    color:var(--pure);
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    font-size:1rem;
-}
 
-section.subscribe .input-wrap button:hover{
+section.subscribe .input-wrap #input-wrapinner button:hover{
     background:var(--secondary);
 }
 section.contact-us{
