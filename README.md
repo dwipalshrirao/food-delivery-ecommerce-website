@@ -88,7 +88,7 @@ Join me on:
 
 <!-- display the social media buttons in your README -->
 
-[![alt text][1.1] =100x100][1]
+![alt text](https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/instagram.svg  =100x100  )(http://www.instagram.com/2palshrirao)
 [![alt text][2.1]][2]
 
 
