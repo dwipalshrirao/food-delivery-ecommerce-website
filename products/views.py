@@ -27,8 +27,6 @@ def all_food(request):
     products=product.objects.all()
     print(request.COOKIES)
     print(request.user,'user')
-
-    
     responce={}
    
     cat=category.objects.all()
@@ -100,12 +98,13 @@ def search(request):
         print(i)
 
     for i in data:
-        cat_query |= Q(name__icontains = i)        
+        cat_query |= Q(name__icontains = i)
+        print(cat_query,'cat')        
     cat_name=category.objects.filter(cat_query)
 
     for i in cat_name:
-        query |= Q(categories__icontains = i)
-    print(query)
+        query |= Q(categories = i)
+    print(query,'query')
     allfood=product.objects.filter(query)
     print(allfood)
     return render(request,'search.html',{'food':allfood,'searchitem':search})

@@ -1,7 +1,10 @@
 # Food-delivery-ecommerce-website
   This is food delivery website which is near about complete solution for **Restautent**. 
   Python with Django framework is used in this project.
-
+  
+  Deployed on vps server. You can check on [www.dwipal.codevedic.com](https://dwipal.codevedic.com)
+  
+  
   ## Project look:
 
   <!-- ![website look](https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/website_look.gif) -->
@@ -99,7 +102,7 @@ Join me on:
 <!-- icons with padding -->
 
 [1.1]: https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/instagram.svg 
-[2.1]: https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/LinkedIn-logo-vector.svg  (facebook icon with padding)
+[2.1]: https://github.com/dwipalshrirao/food-delivery-ecommerce-website/blob/main/LinkedIn-logo-vector.svg  (Join on linkedin)
 
 
 

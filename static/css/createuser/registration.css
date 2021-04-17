@@ -76,7 +76,10 @@ form label {
     padding: 4px 10px;
     font-weight: 400;
     background-color: rgba(255, 255, 255, 0);
+
+    
 }
+
 form  label.floatLabel {
     top: -11px;
     background-color: rgba(255, 255, 255, 0.8);

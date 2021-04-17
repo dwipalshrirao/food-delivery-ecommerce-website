@@ -8,7 +8,7 @@ from .models import CustomUser,unverified_user
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
-    model = CustomUser
+    # model = CustomUser
     list_display = ('email', 'is_staff', 'is_active',)
     for field in CustomUser._meta.get_fields():
 
